@@ -2,6 +2,7 @@ import Image from 'next/image'
 import appPreviewImage from '../assets/app-nlw-copa-preview.png'
 import logoImg from '../assets/logo.svg'
 import usersAvatarExampleImg from '../assets/users-avatar-example.png'
+import iconCheckImg from '../assets/icon-check.svg'
 
 export default function Home() {
   return (
@@ -24,6 +25,23 @@ export default function Home() {
         </form>
 
         <p>Após criar seu bolão, você receberá um código único que poderá usar para convidar outras pessoas 🚀</p>
+
+        <div>
+          <div>
+            <Image src={iconCheckImg} alt="" />
+            <div>
+              <span>+2.034</span>
+              <span>Bolões criados</span>
+            </div>
+          </div>
+          <div>
+            <Image src={iconCheckImg} alt="" />
+            <div>
+              <span>+2.034</span>
+              <span>Bolões criados</span>
+            </div>
+          </div>
+        </div>
       </main>
 
       <Image 
