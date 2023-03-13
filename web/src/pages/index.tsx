@@ -6,20 +6,22 @@ import iconCheckImg from '../assets/icon-check.svg'
 
 export default function Home() {
   return (
-    <div>
+    <div className="max-w-[1124px] h-screen mx-auto grid grid-cols-2 items-center">
       <main>
         <Image src={logoImg} alt="NLW Copa" />
 
-        <h1>Crie seu próprio bolão da copa e compartilhe entre amigos!</h1>
+        <h1 className="mt-14 text-white text-5xl font-bold leading-tight">
+          Crie seu próprio bolão da copa e compartilhe entre amigos!
+        </h1>
 
-        <div>
+        <div className='mt-10 flex items-center gap-2'>
           <Image src={usersAvatarExampleImg} alt="" />
-          <strong>
-            <span>+12.592</span> pessoas já estão usando
+          <strong className="text-gray-100 text-xl">
+            <span className="text-ignite-500">+12.592</span> pessoas já estão usando
           </strong>
         </div>
 
-        <form>
+        <form className="mt-10">
           <input type="text" required placeholder='Qual nome do seu bolão?' />
           <button type='submit'>Criar meu bolão</button>
         </form>
@@ -52,14 +54,3 @@ export default function Home() {
     </div>
   )
 }
-
-// export const getServerSideProps = async () => {
-//   const response = await fetch('http://localhost:3333/pools/count')
-//   const data = await response.json()
-
-//   return {
-//     props: {
-//       count: data.count,
-//     }
-//   }
-// }
