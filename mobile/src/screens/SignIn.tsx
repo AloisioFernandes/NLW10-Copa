@@ -16,6 +16,7 @@ export function SignIn() {
         title="ENTRAR COM GOOGLE"
         leftIcon={<Icon as={Fontisto} name="google" color="white" size="md" />}
         type="SECONDARY"
+        mt={12}
       />
 
       <Text color="white" textAlign="center" mt={4}>
