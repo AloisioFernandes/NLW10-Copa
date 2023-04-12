@@ -18,5 +18,16 @@ export async function authRoutes(fastify: FastifyInstance) {
     })
 
     const userData = await userReponse.json()
+
+    const userInfoSchema = z.object({
+      id: z.string(),
+      email: z.string().email(),
+      name: z.string(),
+      picture: z.string().url(),
+    })
+
+    const userInfo = userInfoSchema.parse(userData)
+
+    return { userInfo }
   })
 }
