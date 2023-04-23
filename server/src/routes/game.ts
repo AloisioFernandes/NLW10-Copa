@@ -29,6 +29,14 @@ export async function gameRoutes(fastify: FastifyInstance) {
       }
     })
 
-    return { games }
+    return { 
+      games: games.map(game => {
+        return {
+          ...game,
+          guess: game.guesses.length > 0 ? game.guesses[0] : null,
+          guesses: undefined,
+        }
+      }) 
+    }
   })  
 }
