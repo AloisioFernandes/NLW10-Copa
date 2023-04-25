@@ -18,6 +18,19 @@ export async function guessRoutes(fastify: FastifyInstance) {
       gameId: z.string(),
     })
 
+    const createGuessBody = z.object({
+      firstTeamPoints: z.number(),
+      secondTeamsPoints: z.number(),
+    })
+
     const { poolId, gameId } = createGuessParams.parse(request.params)
+    const { firstTeamPoints, secondTeamsPoints } = createGuessBody.parse(request.body)
+
+    return {
+      poolId,
+      gameId,
+      firstTeamPoints,
+      secondTeamsPoints
+    }
   })
 }
