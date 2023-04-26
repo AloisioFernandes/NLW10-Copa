@@ -26,6 +26,19 @@ export async function guessRoutes(fastify: FastifyInstance) {
     const { poolId, gameId } = createGuessParams.parse(request.params)
     const { firstTeamPoints, secondTeamsPoints } = createGuessBody.parse(request.body)
 
+    const participant = await prisma.participant.findUnique({
+      where: {
+        userId_poolId: {
+          poolId,
+          userId: request.user.sub
+        }
+      }
+    })
+
+    if (!participant) {
+      return 
+    }
+
     return {
       poolId,
       gameId,
