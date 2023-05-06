@@ -8,8 +8,10 @@ import { Pools } from '../screens/Pools'
 
 const { Navigator, Screen } = createBottomTabNavigator()
 
+
 export function AppRoutes() {
   const { colors, sizes } = useTheme()
+  const size = sizes[6]
 
   return (
     <Navigator screenOptions={{
@@ -32,14 +34,16 @@ export function AppRoutes() {
         name='new'
         component={New}
         options={{
-          tabBarIcon: ({ color }) => <PlusCircle color={color} />
+          tabBarIcon: ({ color }) => <PlusCircle color={color} size={size} />,
+          tabBarLabel: 'Novo bolão'
         }}
       />
       <Screen 
         name='pools'
         component={Pools}
         options={{
-          tabBarIcon: ({ color }) => <SoccerBall color={color} />
+          tabBarIcon: ({ color }) => <SoccerBall color={color} size={size} />,
+          tabBarLabel: 'Meus bolões'
         }}
       />
     </Navigator>
