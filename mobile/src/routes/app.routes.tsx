@@ -51,10 +51,7 @@ export function AppRoutes() {
       <Screen 
         name='find'
         component={Find}
-        options={{
-          tabBarIcon: ({ color }) => <SoccerBall color={color} size={size} />,
-          tabBarLabel: 'Meus bolões'
-        }}
+        options={{ tabBarButton: () => null }}
       />
     </Navigator>
   )
