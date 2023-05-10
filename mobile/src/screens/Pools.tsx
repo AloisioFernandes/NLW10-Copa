@@ -6,7 +6,7 @@ import { Button } from "../components/Button";
 import { Header } from "../components/Header";
 
 export function Pools(){
-  const navigation = useNavigation()
+  const { navigate } = useNavigation()
 
   return (
     <VStack flex={1} bgColor="gray.900">
@@ -16,7 +16,7 @@ export function Pools(){
         <Button 
           title="BUSCAR BOLÃO POR CÓDIGO" 
           leftIcon={<Icon as={Octicons} name="search" color="black" size="md" />}
-          onPress={() => navigation.navigate('find')}
+          onPress={() => navigate('find')}
         />
       </VStack>
     </VStack>
