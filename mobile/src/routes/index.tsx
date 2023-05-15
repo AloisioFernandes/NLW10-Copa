@@ -1,4 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
+import { useAuth } from '../hooks/useAuth'
 
 import { AppRoutes } from "./app.routes"
 
