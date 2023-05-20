@@ -1,12 +1,30 @@
+import { useEffect } from "react";
+
 import { VStack, Icon } from "native-base";
 import { Octicons } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
 
+import { api } from "../services/api";
+
 import { Button } from "../components/Button";
 import { Header } from "../components/Header";
+import { PoolCard } from "../components/PoolCard";
 
 export function Pools(){
   const { navigate } = useNavigation()
+
+  async function fetchPools(){
+    try {
+      const response = await api.get('/pools')
+
+    } catch (error) {
+
+    }
+  }
+
+  useEffect(() => {
+    fetchPools()
+  }, [])
 
   return (
     <VStack flex={1} bgColor="gray.900">
