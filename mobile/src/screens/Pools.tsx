@@ -9,6 +9,7 @@ import { api } from "../services/api";
 import { Button } from "../components/Button";
 import { Header } from "../components/Header";
 import { PoolCard, PoolPros } from "../components/PoolCard";
+import { EmptyPoolList } from "../components/EmptyPoolList";
 import { Loading } from "../components/Loading";
 
 export function Pools(){
@@ -61,6 +62,8 @@ export function Pools(){
         renderItem={({ item }) => <PoolCard data={item} />}
         px={5}
         showsVerticalScrollIndicator={false}
+        _contentContainerStyle={{ pb: 10 }}
+        ListEmptyComponent={() => <EmptyPoolList />}
       />
     </VStack>
   )
