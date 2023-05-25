@@ -1,10 +1,33 @@
-import { Heading, VStack } from "native-base"
+import { useState } from 'react'
+
+import { Heading, useToast, VStack } from "native-base"
 import { Header } from "../components/Header";
 import { Input } from "../components/Input";
 
 import { Button } from "../components/Button";
 
 export function Find() {
+  const [isLoading, setIsLoading] = useState(false)
+
+  const toast = useToast()
+
+  async function handleJoinPool(){
+    try {
+      setIsLoading(true)
+
+    } catch (error) {
+      console.log(error)
+
+      toast.show({
+        title: 'Não foi possível encontrar o bolão',
+        placement: 'top',
+        bgColor: 'red.500'
+      })
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
   return (
     <VStack flex={1} bgColor="gray.900">
       <Header title="Buscar por código" showBackButton />
@@ -22,6 +45,8 @@ export function Find() {
 
         <Button
           title="BUSCAR BOLÃO"
+          isLoading={isLoading}
+          onPress={handleJoinPool}
         />
       </VStack>
     </VStack>
