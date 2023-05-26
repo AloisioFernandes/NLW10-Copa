@@ -8,6 +8,7 @@ import { Button } from "../components/Button";
 
 export function Find() {
   const [isLoading, setIsLoading] = useState(false)
+  const [code, setCode] = useState('')
 
   const toast = useToast()
 
@@ -17,6 +18,22 @@ export function Find() {
 
     } catch (error) {
       console.log(error)
+
+      if (error.response?.data?.message === 'Pool not found.') {
+        return toast.show({
+          title: 'Bolão não encontrado',
+          placement: 'top',
+          bgColor: 'red.500'
+        })
+      }
+
+      if (error.response?.data?.message === 'You already joined this pool.') {
+        return toast.show({
+          title: 'Você já está nesse bolão',
+          placement: 'top',
+          bgColor: 'red.500'
+        })
+      }
 
       toast.show({
         title: 'Não foi possível encontrar o bolão',
@@ -41,6 +58,8 @@ export function Find() {
         <Input
           mb={2}
           placeholder="Qual o código do bolão"
+          autoCapitalize='characters'
+          onChangeText={setCode}
         />
 
         <Button
