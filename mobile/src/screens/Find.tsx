@@ -1,6 +1,9 @@
 import { useState } from 'react'
-
 import { Heading, useToast, VStack } from "native-base"
+import { useNavigation } from '@react-navigation/native';
+
+import { api } from '../services/api'
+
 import { Header } from "../components/Header";
 import { Input } from "../components/Input";
 
@@ -11,13 +14,33 @@ export function Find() {
   const [code, setCode] = useState('')
 
   const toast = useToast()
+  const { navigate } = useNavigation()
 
   async function handleJoinPool(){
     try {
       setIsLoading(true)
 
+      if (!code.trim()) {
+        return toast.show({
+          title: 'Informe o código',
+          placement: 'top',
+          bgColor: 'red.500'
+        })
+      }
+
+      await api.post('/pools/join', { code })
+
+      toast.show({
+        title: 'Você entrou no bolão com sucesso',
+        placement: 'top',
+        bgColor: 'green.500'
+      })
+
+      navigate('pools')
+
     } catch (error) {
       console.log(error)
+      setIsLoading(false)
 
       if (error.response?.data?.message === 'Pool not found.') {
         return toast.show({
@@ -40,8 +63,6 @@ export function Find() {
         placement: 'top',
         bgColor: 'red.500'
       })
-    } finally {
-      setIsLoading(false)
     }
   }
 
