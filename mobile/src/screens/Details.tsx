@@ -18,3 +18,4 @@ export function Details() {
     </VStack>
   )
 }
+// 1:05:30
