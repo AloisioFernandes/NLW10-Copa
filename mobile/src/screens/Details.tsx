@@ -7,6 +7,9 @@ import { api } from "../services/api";
 
 import { Header } from "../components/Header";
 import { Loading } from "../components/Loading";
+import { EmptyMyPoolList } from "../components/EmptyMyPoolList";
+import { PoolCardProps } from "../components/PoolCard"
+import { PoolHeader } from "../components/PoolHeader";
 
 interface RouteParams {
   id: string;
@@ -14,6 +17,7 @@ interface RouteParams {
 
 export function Details() {
   const [isLoading, setIsLoading] = useState(true)
+  const [poolDetails, setPoolDetails] = useState<PoolCardProps>({} as PoolCardProps)
 
   const route = useRoute()
   const toast = useToast()
@@ -24,6 +28,7 @@ export function Details() {
       setIsLoading(true)
 
       const response = await api.get(`/pools/${id}`)
+      setPoolDetails(response.data.pool)
 
     } catch (error) {
       console.log(error)
@@ -50,7 +55,14 @@ export function Details() {
   return (
     <VStack flex={1} bgColor="gray.900">
       <Header title={id} showBackButton showShareButton/>
-
+      {
+        poolDetails._count?.participants > 0 ?
+        <VStack px={5} flex={1}>
+          <PoolHeader data={poolDetails} />
+        </VStack>
+        :
+        <EmptyMyPoolList code={poolDetails.code} />
+      }
     </VStack>
   )
 }
