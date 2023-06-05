@@ -11,6 +11,7 @@ import { Loading } from "../components/Loading";
 import { PoolHeader } from "../components/PoolHeader";
 import { PoolCardProps } from "../components/PoolCard"
 import { EmptyMyPoolList } from "../components/EmptyMyPoolList";
+import { Share } from "react-native";
 
 interface RouteParams {
   id: string;
@@ -25,7 +26,7 @@ export function Details() {
   const toast = useToast()
   const { id } = route.params as RouteParams
 
-  async function fetchPoolDetails(){
+  async function fetchPoolDetails() {
     try {
       setIsLoading(true)
 
@@ -46,6 +47,12 @@ export function Details() {
     }
   }
 
+  async function handleCodeShare() {
+    await Share.share({
+      message: poolDetails.code
+    })
+  }
+
   useEffect(() => {
     fetchPoolDetails()
   }, [])
@@ -56,7 +63,12 @@ export function Details() {
 
   return (
     <VStack flex={1} bgColor="gray.900">
-      <Header title={id} showBackButton showShareButton/>
+      <Header 
+        title={poolDetails.title} 
+        showBackButton 
+        showShareButton
+        onShare={handleCodeShare}
+      />
       {
         poolDetails._count?.participants > 0 ?
         <VStack px={5} flex={1}>
