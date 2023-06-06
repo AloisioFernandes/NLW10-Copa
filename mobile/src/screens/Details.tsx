@@ -8,6 +8,7 @@ import { api } from "../services/api";
 import { Header } from "../components/Header";
 import { Option } from "../components/Option";
 import { Loading } from "../components/Loading";
+import { Guesses } from "../components/Guesses";
 import { PoolHeader } from "../components/PoolHeader";
 import { PoolCardProps } from "../components/PoolCard"
 import { EmptyMyPoolList } from "../components/EmptyMyPoolList";
@@ -93,3 +94,4 @@ export function Details() {
     </VStack>
   )
 }
+// 1:31:00
