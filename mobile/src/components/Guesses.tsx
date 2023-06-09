@@ -13,7 +13,7 @@ export function Guesses({ poolId }: Props) {
 
   async function fetchGuesses() {
     try {
-      
+      setGames()
     } catch (error) {
       console.log(error)
 
@@ -35,3 +35,4 @@ export function Guesses({ poolId }: Props) {
     </Box>
   );
 }
+// 1:33:00
