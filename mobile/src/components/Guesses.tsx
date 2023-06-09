@@ -1,6 +1,8 @@
 import { Box, useToast } from 'native-base';
 import { useState } from 'react';
 
+import { api } from '../services/api'
+
 interface Props {
   poolId: string;
 }
@@ -13,7 +15,9 @@ export function Guesses({ poolId }: Props) {
 
   async function fetchGuesses() {
     try {
-      setGames()
+      setIsLoading(true)
+
+      const response = await api.get(`/pools/${poolId}/games`)
     } catch (error) {
       console.log(error)
 
@@ -35,4 +39,3 @@ export function Guesses({ poolId }: Props) {
     </Box>
   );
 }
-// 1:33:00
