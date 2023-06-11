@@ -18,6 +18,7 @@ export function Guesses({ poolId }: Props) {
       setIsLoading(true)
 
       const response = await api.get(`/pools/${poolId}/games`)
+      console.log(response)
     } catch (error) {
       console.log(error)
 
@@ -39,3 +40,4 @@ export function Guesses({ poolId }: Props) {
     </Box>
   );
 }
+// 1:34:00
