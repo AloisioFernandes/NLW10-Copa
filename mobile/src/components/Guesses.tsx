@@ -1,5 +1,5 @@
 import { Box, useToast } from 'native-base';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { api } from '../services/api'
 
@@ -33,6 +33,9 @@ export function Guesses({ poolId }: Props) {
     }
   }
 
+  useEffect(() => {
+    fetchGuesses()
+  }, [poolId])
 
   return (
     <Box>
@@ -40,4 +43,3 @@ export function Guesses({ poolId }: Props) {
     </Box>
   );
 }
-// 1:34:00
