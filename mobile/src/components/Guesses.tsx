@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 
 import { api } from '../services/api'
 
+import { Game, GameProps } from "../components/Game"
+
 interface Props {
   poolId: string;
 }
