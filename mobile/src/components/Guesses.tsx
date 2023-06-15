@@ -11,7 +11,7 @@ interface Props {
 
 export function Guesses({ poolId }: Props) {
   const [isLoading, setIsLoading] = useState(true)
-  const [games, setGames] = useState([])
+  const [games, setGames] = useState<GameProps[]>([])
 
   const toast = useToast()
 
@@ -20,7 +20,7 @@ export function Guesses({ poolId }: Props) {
       setIsLoading(true)
 
       const response = await api.get(`/pools/${poolId}/games`)
-      console.log(response.data)
+      setGames(response.data.games)
     } catch (error) {
       console.log(error)
 
