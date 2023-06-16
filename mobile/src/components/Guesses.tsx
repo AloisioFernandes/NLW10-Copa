@@ -53,6 +53,7 @@ export function Guesses({ poolId }: Props) {
           onGuessConfirm={() => {}}
         />
       )}
+      _contentContainerStyle={{ pb: 10 }}
     />
   );
 }
